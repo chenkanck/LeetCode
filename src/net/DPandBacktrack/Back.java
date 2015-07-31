@@ -33,5 +33,6 @@ class tests{
 		List<Integer> list = Arrays.asList(18,20,30,36);
 		for (int t:list)
 			System.out.println((new Back()).back(t, set));
+		int[] ii = {1,2};
 	}
 }
