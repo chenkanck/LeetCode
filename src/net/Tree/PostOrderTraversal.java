@@ -41,4 +41,30 @@ public class PostOrderTraversal {
         Collections.reverse(ret);
         return ret;
     }
+    /**
+     * iterative with pre is the best
+     */
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        List<Integer> ret = new ArrayList<>();
+        if (root == null) return ret;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = null;
+        TreeNode pre = null;
+        stack.push(root);
+        while (!stack.isEmpty()){
+            cur = stack.pop();
+            if ((cur.left == null && cur.right == null) || (cur.right != null && cur.right == pre)
+                ||(cur.right == null && cur.left == pre) ){
+                ret.add(cur.val);
+                pre = cur;
+            }else if (cur.left == null || cur.left == pre) {
+                stack.push(cur);
+                stack.push(cur.right);
+            }else{
+                stack.push(cur);
+                stack.push(cur.left);
+            }
+        }
+        return ret;
+    }
 }
